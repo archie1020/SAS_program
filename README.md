@@ -12,22 +12,36 @@ We need use the macro e.g(%male-define) to generate parts of the define.xml file
 3. For SDTM programs:
 
 a） "make_empty_dataset.sas": contains a macro "%make_empty_dataset" to generate an empty domain dataset according to the variable list specified in the metadata file "SDTM_METADATA.xlsx".
+
 b) "make_sdtm_dy2.sas": contains a macro "%make_sdtm_dy2" to generate study day for date variables.
+
 c) "make_sort_order.sas": contains a macro "%make_sort_order" to generate a macro variable which contains the keys for ranking a SDTM dataset.
+
 d) "sdtm_dm.sas": generates the SDTM DM and SUPPDM domain datasets from "dm.sas" and "ds.sas" outputs.
+
 e) "sdtm_ae.sas": generates the SDTM AE domain dataset from "sdtm_dm.sas" and "ae.sas" outputs.
+
 f) "sdtm_EX.sas": generates the SDTM EX domain dataset from "sdtm_dm.sas" and "ds.sas" outputs.
+
 g) "sdtm_lb.sas": generates the SDTM LB domain dataset from "sdtm_dm.sas" and "lb.sas" outputs.
+
 h) "sdtm_xp.sas": generates the SDTM XP domain dataset from "sdtm_dm.sas" and "pn.sas" outputs.
 
 4. For ADam programs：
 a) "setup.sas": contains library and format settings.
+
 b) "cfb.sas": contains a macro "%cfb" to generate baseline values and change from the baseline.
+
 c) "dtc2dt.sas": contains a macro "%dtc2dt" to convert character date to numeric date.
+
 d) "mergesupp.sas": contains a macro "%mergesupp" to merge supplemental qualifiers into the parent SDTM domain.
+
 e) "adam_adsl.sas": generates the ADaM ADSL domain dataset from "sdtm_dm.sas" and "sdtm_xp.sas" outputs.
+
 f) "adam_adae.sas": generates the ADaM ADAE domain dataset from "adam_adsl.sas" and "sdtm_ae.sas" outputs.
+
 g) "adam_adef.sas": generates the ADaM ADEF domain dataset from "adam_adsl.sas" and "sdtm_xp.sas" outputs.
+
 h) "adam_adtte.sas": generates the ADaM ADTTE domain dataset from "adam_adsl.sas", "adam_adae.sas" and "adam_adef.sas" outputs.
 
 
