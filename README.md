@@ -1,4 +1,36 @@
 # SAS_program
+
+SAS scripts for alinical trials applications including generating SDTM domains, ADaM datasets, and Define.xml files.
+Data information:
+
+1. For Preprocess programs:
+The majority of dataset in a clinical trails application would contains demographic data, adverse event data , doing data, pain score data and labs data, Those data are all raw data, So we do have sas files to deal with these dataset. Therefore these dm.sas, ae.sas, ds.sas, pn.sas and lab.sas are generated for them.
+
+2. For 'Define. xml' program:
+We need use the macro e.g(%male-define) to generate parts of the define.xml file for the SDTM and ADaM, which can be further concatenated into the define.xml file.
+
+3. For SDTM programs:
+
+a） "make_empty_dataset.sas": contains a macro "%make_empty_dataset" to generate an empty domain dataset according to the variable list specified in the metadata file "SDTM_METADATA.xlsx".
+b) "make_sdtm_dy2.sas": contains a macro "%make_sdtm_dy2" to generate study day for date variables.
+c) "make_sort_order.sas": contains a macro "%make_sort_order" to generate a macro variable which contains the keys for ranking a SDTM dataset.
+d) "sdtm_dm.sas": generates the SDTM DM and SUPPDM domain datasets from "dm.sas" and "ds.sas" outputs.
+e) "sdtm_ae.sas": generates the SDTM AE domain dataset from "sdtm_dm.sas" and "ae.sas" outputs.
+f) "sdtm_EX.sas": generates the SDTM EX domain dataset from "sdtm_dm.sas" and "ds.sas" outputs.
+g) "sdtm_lb.sas": generates the SDTM LB domain dataset from "sdtm_dm.sas" and "lb.sas" outputs.
+h) "sdtm_xp.sas": generates the SDTM XP domain dataset from "sdtm_dm.sas" and "pn.sas" outputs.
+
+4. For ADam programs：
+a) "setup.sas": contains library and format settings.
+b) "cfb.sas": contains a macro "%cfb" to generate baseline values and change from the baseline.
+c) "dtc2dt.sas": contains a macro "%dtc2dt" to convert character date to numeric date.
+d) "mergesupp.sas": contains a macro "%mergesupp" to merge supplemental qualifiers into the parent SDTM domain.
+e) "adam_adsl.sas": generates the ADaM ADSL domain dataset from "sdtm_dm.sas" and "sdtm_xp.sas" outputs.
+f) "adam_adae.sas": generates the ADaM ADAE domain dataset from "adam_adsl.sas" and "sdtm_ae.sas" outputs.
+g) "adam_adef.sas": generates the ADaM ADEF domain dataset from "adam_adsl.sas" and "sdtm_xp.sas" outputs.
+h) "adam_adtte.sas": generates the ADaM ADTTE domain dataset from "adam_adsl.sas", "adam_adae.sas" and "adam_adef.sas" outputs.
+
+
 The difference between using Graphical User Interface (GUI) and Conventinal programming for SDTM mapping, preforming CDISC Compliance checks. 
 
 Introduction:
@@ -10,4 +42,4 @@ There are many apporaches for getting your data into shape from raw data. This p
 1) CONVENTIONAL PROGRAMMING APPROACH:
 This is the most common method used by the industry over the years for preparing submission ready datasets. As a clinical programmer there are many options to go for. The objective is accelerate the process in all way for accessing, managing, analyzing and finally reporting clinical data for reviewing agencies and getting the new drug faster into the market. 
 
-Here is the sample SAS code for creating DM SDTM dataset. THis code involves calls of data step, proc step and functions usage to create the desired final dataset.
+SAMPLE.SAS the sample SAS code for creating DM SDTM dataset. THis code involves calls of data step, proc step and functions usage to create the desired final dataset.
